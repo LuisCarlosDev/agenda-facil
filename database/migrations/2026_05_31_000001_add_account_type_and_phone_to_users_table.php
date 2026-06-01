@@ -9,8 +9,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('account_type')->default('cliente')->after('email');
-            $table->string('phone')->nullable()->after('account_type');
+            $table->string('account_type')->default('cliente');
+            $table->string('phone')->nullable();
         });
     }
 
