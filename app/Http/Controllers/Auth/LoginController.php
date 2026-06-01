@@ -10,12 +10,8 @@ use Illuminate\View\View;
 
 class LoginController extends Controller
 {
-    public function create(): View|RedirectResponse
+    public function create(): View
     {
-        if (Auth::check() && ! session('toast.redirect')) {
-            return redirect()->route('dashboard');
-        }
-
         return view('auth.login');
     }
 
@@ -29,10 +25,9 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->route('login')->with('toast', [
+            return redirect()->route('dashboard')->with('toast', [
                 'type' => 'success',
-                'message' => 'Login efetuado com sucesso, aguarde você será redirecionado para o dashboard',
-                'redirect' => route('dashboard'),
+                'message' => 'Login efetuado com sucesso!',
             ]);
         }
 
