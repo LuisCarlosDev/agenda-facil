@@ -16,7 +16,11 @@
         </x-dashboard.nav-item>
 
         @if (auth()->user()->isProfissional())
-            <x-dashboard.nav-item href="#" label="Serviços">
+            <x-dashboard.nav-item
+                :href="route('services.index')"
+                label="Serviços"
+                :active="request()->routeIs('services.*')"
+            >
                 <x-slot:icon>
                     <x-ui.icons.briefcase class="h-5 w-5 shrink-0" />
                 </x-slot:icon>

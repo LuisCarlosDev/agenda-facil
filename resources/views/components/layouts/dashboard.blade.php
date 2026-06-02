@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @if (auth()->check() && auth()->user()->isProfissional())
+        <meta name="services-options-url" content="{{ route('services.options') }}">
+    @endif
+    @if (auth()->check() && auth()->user()->isCliente())
+        <meta name="booking-services-url" content="{{ route('services.booking-options') }}">
+    @endif
     <title>{{ $title ?? 'AgendaFácil' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

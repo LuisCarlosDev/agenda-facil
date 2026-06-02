@@ -8,9 +8,11 @@ class DashboardController extends Controller
 {
     public function index(): View
     {
+        $user = auth()->user();
+
         return view('dashboard', [
             'stats' => [
-                'totalServices' => 0,
+                'totalServices' => $user->isProfissional() ? $user->services()->count() : 0,
                 'pending' => 0,
                 'confirmed' => 0,
                 'completed' => 0,

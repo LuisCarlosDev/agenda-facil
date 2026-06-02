@@ -42,4 +42,18 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
+
+    public function profissional(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'account_type' => 'profissional',
+        ]);
+    }
+
+    public function cliente(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'account_type' => 'cliente',
+        ]);
+    }
 }
